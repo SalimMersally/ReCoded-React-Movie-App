@@ -1,17 +1,19 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Footer() {
   return (
     <div>
+      <p>made by:</p>
       <Button variant="link" href="https://github.com/karenchehade">
-        karen's github
+        Karen Chehade
       </Button>
       <Button variant="link" href="https://github.com/SalimMersally">
-        sallim's github
+        Salim Al Mersally
       </Button>
       <Button variant="link" href="https://github.com/hsank96">
-        hazem's github
+        Hazem Sankari
       </Button>
     </div>
   );
