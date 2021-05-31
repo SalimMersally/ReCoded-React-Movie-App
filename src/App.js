@@ -1,12 +1,15 @@
-import "./styles.css";
+//import components
 import Main from "./components/main";
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
 import React, { useState } from "react";
+
+//import css
+import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+//variables
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
-const path = "search/movie";
 const api_key = "8f1f011d080e1565511d99335cb48312";
 
 //Working Example Link with Query:
@@ -14,24 +17,41 @@ const api_key = "8f1f011d080e1565511d99335cb48312";
 
 const query = "Fight Club";
 const constructUrl = (path, query) => {
-  return `${TMDB_BASE_URL}/${path}?api_key=${api_key}&query=${query}`;
+  if (query === "") {
+    return `${TMDB_BASE_URL}/${path}?api_key=${api_key}`;
+  } else {
+    return `${TMDB_BASE_URL}/${path}?api_key=${api_key}&query=${query}`;
+  }
 };
 
 // const example = "https://api.themoviedb.org/3/movie/550?api_key=8f1f011d080e1565511d99335cb48312";
 
-fetch(constructUrl(path, query)).then((response) => response.json());
-// .then((json) => console.log(json));
-
 export default function App() {
-  let [search, setSearch] = useState("");
-  function handleQuery(query) {
-    setSearch(() => query);
+  let [movies, setMovies] = useState([]);
+
+  function handleMovie(path, query, genre) {
+    fetch(constructUrl(path, query))
+      .then((response) => response.json())
+      .then((json) => setMovies(json.results));
+
+    if (genre) {
+      setMovies(
+        movies.filter((movie) => {
+          if (movie["genre_ids"].find((id) => id === genre)) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      );
+    }
   }
 
   return (
     <div className="App">
-      <Navigation />
-      <Main />
+      <Navigation function={handleMovie} />
+      {console.log(movies)}
+      <Main movies={movies} />
       <Footer />
     </div>
   );

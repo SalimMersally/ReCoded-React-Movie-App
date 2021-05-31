@@ -1,20 +1,35 @@
 import React, { useState } from "react";
 import Spin from "./spinner";
-import { Button, Navbar, Nav, Form } from "react-bootstrap";
+import { Button, Navbar, Nav, Form, Dropdown } from "react-bootstrap";
 import SearchBox from "./SearchBox";
+import genres from "./genres";
+
 function Navigation(props) {
   return (
-    <Navbar className="bg-light p-2">
-      <Navbar.Brand href="#home">Movies</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar className="bg-light p-2 justify-content-between">
       <Nav className="mr-auto ">
-        <Nav.Link href="#home">Home</Nav.Link>
-        {/* Implemented SearchBox Component */}
-        <SearchBox />
+        <Navbar.Brand href="#home">Movies</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            Genres
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {genres.map((genre) => {
+              let path = "movie/popular";
+              return (
+                <Dropdown.Item
+                  id={genre.id}
+                  onClick={() => props.function(path, "", genre.id)}
+                >
+                  {genre.name}
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown.Menu>
+        </Dropdown>
       </Nav>
-      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-        <Spin />
-      </Navbar.Collapse>
+      <SearchBox function={props.function} />
     </Navbar>
   );
 }

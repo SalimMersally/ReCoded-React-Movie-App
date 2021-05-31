@@ -1,7 +1,8 @@
 import React from "react";
+import MovieGrid from "./MovieGrid";
 
-function Main() {
-  return <h1>Main Component</h1>;
+function Main(props) {
+  return <MovieGrid movies={props.movies} />;
 }
 
 export default Main;
