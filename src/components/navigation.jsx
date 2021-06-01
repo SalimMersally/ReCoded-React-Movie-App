@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import Spin from "./spinner";
 import { Button, Navbar, Nav, Form, Dropdown } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import genres from "./genres";
 
 function Navigation(props) {
+  const dropdowns = genres.map((genre) => {
+    let path = "movie/popular";
+    return (
+      <Dropdown.Item
+        id={genre.id}
+        onClick={() => props.function(path, "", genre.id)}
+      >
+        {genre.name}
+      </Dropdown.Item>
+    );
+  });
+
   return (
     <Navbar className="bg-light p-2 justify-content-between">
       <Nav className="mr-auto ">
@@ -14,19 +25,7 @@ function Navigation(props) {
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Genres
           </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {genres.map((genre) => {
-              let path = "movie/popular";
-              return (
-                <Dropdown.Item
-                  id={genre.id}
-                  onClick={() => props.function(path, "", genre.id)}
-                >
-                  {genre.name}
-                </Dropdown.Item>
-              );
-            })}
-          </Dropdown.Menu>
+          <Dropdown.Menu>{dropdowns}</Dropdown.Menu>
         </Dropdown>
       </Nav>
       <SearchBox function={props.function} />

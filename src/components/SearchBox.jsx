@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Button, Navbar, Nav, Form } from "react-bootstrap";
-import { Spinner } from "react-bootstrap";
+import { Button, Navbar, Nav, Form, Spinner } from "react-bootstrap";
 
 function SearchBox(props) {
-  let [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const [isHidden, setIsHidden] = useState("hidden");
   const path = "search/movie";
-  function onSearch() {
-    if (document.getElementById("searchBox").value !== "") {
+
+  function onSearch(e) {
+    if (e.target.value !== "") {
       setIsHidden("visible");
     } else {
       setIsHidden("hidden");
@@ -31,16 +31,16 @@ function SearchBox(props) {
           aria-label="Search"
           value={searchInput}
           onChange={(e) => {
-            onSearch();
+            onSearch(e);
             setSearchInput(e.target.value);
           }}
         />
         <Button
           variant="outline-success"
           onClick={(e) => {
-            props.function(path, searchInput);
+            props.function(path, searchInput, 0);
             setSearchInput("");
-            onSearch();
+            setIsHidden("hidden");
           }}
         >
           Search
