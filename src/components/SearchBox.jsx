@@ -1,53 +1,59 @@
-import React, { useState } from "react";
-import { Button, Navbar, Nav, Form, Spinner } from "react-bootstrap";
+import React, { useState } from 'react'
+import { Button, Nav, Form, Spinner } from 'react-bootstrap'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function SearchBox(props) {
-  const [searchInput, setSearchInput] = useState("");
-  const [isHidden, setIsHidden] = useState("hidden");
-  const path = "search/movie";
+  const [searchInput, setSearchInput] = useState('')
+  const [isHidden, setIsHidden] = useState('hidden')
+  const path = 'search/movie'
 
   function onSearch(e) {
-    if (e.target.value !== "") {
-      setIsHidden("visible");
+    if (e.target.value !== '') {
+      setIsHidden('visible')
     } else {
-      setIsHidden("hidden");
+      setIsHidden('hidden')
     }
   }
   return (
-    <Nav className="mr-auto ">
-      <Spinner
-        className="m-2"
-        animation="grow"
-        variant="dark"
-        style={{ visibility: isHidden }}
-      />
-
-      <Form className="d-flex" inline>
-        <Form.Control
-          id="searchBox"
-          type="search"
-          placeholder="Search"
-          className="mr-2"
-          aria-label="Search"
-          value={searchInput}
-          onChange={(e) => {
-            onSearch(e);
-            setSearchInput(e.target.value);
+    <Row>
+      <Col className='mt-2 p-0' lg='1' md='1'>
+        {' '}
+        <Spinner
+          animation='grow'
+          variant='dark'
+          style={{
+            visibility: isHidden,
           }}
         />
-        <Button
-          variant="outline-success"
-          onClick={(e) => {
-            props.function(path, searchInput, 0);
-            setSearchInput("");
-            setIsHidden("hidden");
-          }}
-        >
-          Search
-        </Button>
-      </Form>
-    </Nav>
-  );
+      </Col>
+      <Col lg='9' md='11'>
+        <Form className='d-flex' inline>
+          <Form.Control
+            id='searchBox'
+            type='search'
+            placeholder='Search'
+            aria-label='Search'
+            value={searchInput}
+            onChange={(e) => {
+              onSearch(e)
+              setSearchInput(e.target.value)
+            }}
+          />
+          <Button
+            variant='outline-primary'
+            onClick={(e) => {
+              props.function(path, searchInput, 0)
+              setSearchInput('')
+              setIsHidden('hidden')
+            }}
+          >
+            Search
+          </Button>
+        </Form>
+      </Col>
+    </Row>
+  )
 }
 
-export default SearchBox;
+export default SearchBox
