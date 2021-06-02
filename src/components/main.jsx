@@ -1,27 +1,21 @@
-import React from "react";
-import MovieGrid from "./MovieGrid";
-
-let popularPath = "movie/popular";
+import React from 'react'
+import MovieGrid from './MovieGrid'
 
 function Main(props) {
-  let movies = [];
+  let movies = []
   if (props.genreId !== 0) {
     movies = props.movies.filter((movie) => {
-      if (movie["genre_ids"].find((id) => id === props.genreId)) {
-        return true;
+      if (movie['genre_ids'].find((id) => id === props.genreId)) {
+        return true
       } else {
-        return false;
+        return false
       }
-    });
+    })
   } else {
-    movies = props.movies;
-  }
-  if (movies.length === 0) {
-    props.function(popularPath, "", 0);
+    movies = props.movies
   }
 
-  console.log(movies);
-  return <MovieGrid movies={movies} />;
+  return <MovieGrid movies={movies} />
 }
 
-export default Main;
+export default Main
