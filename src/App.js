@@ -2,7 +2,7 @@
 import Main from './components/main'
 import Navigation from './components/navigation'
 import Footer from './components/footer'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 //import css
 import './styles.css'
@@ -29,7 +29,11 @@ const constructUrl = (path, query) => {
 export default function App() {
   let [movies, setMovies] = useState([])
   let [genreId, setGenreId] = useState(0)
-  let result = []
+
+  useEffect(() => {
+    handleMovie(popularPath, '', 0)
+    console.log('calling useEffect')
+  }, [])
 
   function handleMovie(path, query, genre) {
     fetch(constructUrl(path, query))
