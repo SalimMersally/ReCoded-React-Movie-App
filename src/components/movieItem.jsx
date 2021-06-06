@@ -1,54 +1,34 @@
-import React from 'react'
-import Image from 'react-bootstrap/Image'
-import Badge from 'react-bootstrap/Badge'
-import Row from 'react-bootstrap/Row'
-import { useHistory } from 'react-router-dom'
+import React from "react";
+import Image from "react-bootstrap/Image";
+import Badge from "react-bootstrap/Badge";
+import Row from "react-bootstrap/Row";
+import { Link, useHistory } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
 // Movie Grid Item
 function MovieItem(props) {
-  const {
-    id,
-    title,
-    poster_path,
-    release_date,
-    vote_average,
-    overview,
-    genre_ids,
-  } = props.movie
-  const history = useHistory()
-
-  function handleClick(movie) {
-    history.push('movie/' + movie.title)
-  }
+  const { id, title, poster_path, release_date, vote_average, genre_ids } =
+    props.movie;
 
   return (
-    <Row id='movieItemStyle'>
-      <h2>{title}</h2>
-      {poster_path ? (
-        <Image src={'https://image.tmdb.org/t/p/w500' + poster_path} />
-      ) : (
-        <p>No Photo</p>
-      )}
-      <h4>Release Date: {release_date}</h4>
-      <h5>IMDB Rating: {vote_average}</h5>
-      <button
-        onClick={(e) => handleClick(props.movie)}
-        style={{ background: 'grey', color: 'blue' }}
-      >
-        More Info
-      </button>
-
-      {/* {vote_average >= 5 ? (
-        <Badge pill variant='success'>
-          IMDB Rating: {vote_average}
-        </Badge>
-      ) : (
-        <Badge pill variant='danger'>
-          IMDB Rating: {vote_average}
-        </Badge>
-      )} */}
+    <Row>
+      <Card className='m-3'>
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <Card.Img
+            variant='top'
+            src={"https://image.tmdb.org/t/p/w500" + poster_path}
+          />
+          {poster_path ? <Image /> : <p>No Photo</p>}
+          <Card.Text>Release Date: {release_date}</Card.Text>
+          <Card.Text>IMDB Rating: {vote_average}</Card.Text>
+        </Card.Body>
+        <Link className='btn btn-primary' to={"/movie/" + id}>
+          more details
+        </Link>
+      </Card>
     </Row>
-  )
+  );
 }
 
-export default MovieItem
+export default MovieItem;
