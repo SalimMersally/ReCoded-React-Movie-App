@@ -1,9 +1,10 @@
 //import components
+import React, { useState, useEffect, useContext } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AppContext } from "./StateProvider";
 import Main from "./components/main";
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MovieDetails from "./components/movieDetails";
 
 //import css
@@ -24,8 +25,9 @@ const constructUrl = (path, query) => {
 };
 
 export default function App() {
-  let [movies, setMovies] = useState([]);
-  let [genreId, setGenreId] = useState(0);
+  const [state, dispatch] = useContext(AppContext);
+  // let [movies, setMovies] = useState([]);
+  // let [genreId, setGenreId] = useState(0);
 
   useEffect(() => {
     handleMovie(popularPath, "", 0);
@@ -35,23 +37,22 @@ export default function App() {
   function handleMovie(path, query, genre) {
     fetch(constructUrl(path, query))
       .then((response) => response.json())
-      .then((json) => setMovies(json.results));
+      .then((json) => dispatch({ type: "SET_MOVIES", value: json.results }));
 
-    setGenreId(genre);
+    dispatch({ type: "SET_GENRE", value: genre });
   }
 
   return (
     <Router>
       <Navigation function={handleMovie} />
+      {console.log(state)}
       <Switch>
         <Route
-          path='/'
+          path="/"
           exact
-          render={() => (
-            <Main movies={movies} genreId={genreId} function={handleMovie} />
-          )}
+          render={() => <Main movies={state.movies} genreId={state.genreId} />}
         />
-        <Route path='/movie/:id' component={MovieDetails} />
+        <Route path="/movie/:id" component={MovieDetails} />
       </Switch>
       <Footer />
     </Router>

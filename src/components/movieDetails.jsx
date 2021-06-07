@@ -9,20 +9,22 @@ import genres from "./genres";
 
 function MovieDetails() {
   let [movie, setMovie] = useState({});
-  let [movieActors, setMovieActors] = useState([]);
-  let [movieTrailor, setMovieTrailor] = useState("");
+  let [movieActors, setMovieActors] = useState({});
+  let [movieTrailer, setMovieTrailer] = useState("");
   const IMDB_API = "k_kq2owrli";
   const { id } = useParams();
-  useEffect(() => {
-    fetch(
-      "https://api.themoviedb.org/3/movie/" +
-        id +
-        "?api_key=8f1f011d080e1565511d99335cb48312"
-    )
-      .then((response) => response.json())
-      .then((json) => setMovieActors(json));
-  });
+  const YT_LINK = "https://www.youtube.com/watch?v=";
+  // useEffect(() => {
+  //   fetch(
+  //     "https://api.themoviedb.org/3/movie/" +
+  //       id +
+  //       "?api_key=8f1f011d080e1565511d99335cb48312"
+  //   )
+  //     .then((response) => response.json())
+  //     .then((json) => setMovieActors(json));
+  // }, []);
 
+  //Setting the Movie:
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/" +
@@ -31,19 +33,38 @@ function MovieDetails() {
     )
       .then((response) => response.json())
       .then((json) => setMovie(json));
-  });
-  // useEffect(() => {
-  //   movieTrailer(movie.title, release_date).then((response) =>
-  //     console.log(response)
-  //   );
-  // });
+  }, []);
 
+  //Setting Movie Trailer:
+  // https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=
+  useEffect(() => {
+    fetch(
+      "https://api.themoviedb.org/3/movie/" +
+        id +
+        "/videos?api_key=8f1f011d080e1565511d99335cb48312"
+    )
+      .then((response) => response.json())
+      .then((json) => setMovieTrailer(json));
+  }, []);
+
+  //Setting Movie Actors:
+  // https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=*
+  useEffect(() => {
+    fetch(
+      "https://api.themoviedb.org/3/movie/" +
+        id +
+        "/credits?api_key=8f1f011d080e1565511d99335cb48312"
+    )
+      .then((response) => response.json())
+      .then((json) => setMovieActors(json));
+  }, []);
+  // console.log(movieActors.cast["0"]);
   return (
     <div>
-      <Link to='/'>{"<"} back</Link>
+      <Link to="/">{"<"} back</Link>
 
-      <Row id='movieItemStyle'>
-        <Col lg='4'>
+      <Row id="movieItemStyle">
+        <Col lg="4">
           {movie.poster_path ? (
             <Image
               fluid
@@ -54,12 +75,21 @@ function MovieDetails() {
             <p>No Photo</p>
           )}
         </Col>
-        <Col lg='8'>
+        <Col lg="8">
           {" "}
           <h2>{movie.title}</h2>
           <p>{movie.overview}</p>
           <h5>IMDB Rating: {movie.vote_average}</h5>
           <h5>Release Date: {movie.release_date}</h5>
+          {/* Actors */}
+          <h6>Actors</h6>
+          <h7>{movieActors.id}</h7>
+          {/* <h7>
+            {movieActors[0].cast.map((actor) => {
+              return <p>{actor.name}</p>;
+            })}
+          </h7> */}
+          {/* <h7>{movieActors[1].name}</h7> */}
           {/* {movie.genre_ids.map((id)=>{
             if(id === genres.id){
 
