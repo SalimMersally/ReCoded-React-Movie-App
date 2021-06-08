@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "react-bootstrap/Image";
-import Badge from "react-bootstrap/Badge";
+import { Card, Badge } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import { Link, useHistory } from "react-router-dom";
-import Card from "react-bootstrap/Card";
+// import Card from "react-bootstrap/Card";
 
 // Movie Grid Item
 function MovieItem(props) {
@@ -11,23 +11,29 @@ function MovieItem(props) {
     props.movie;
 
   return (
-    
-      <Card>
+    <Card id='cardItem'>
+      <Link className='btn' to={"/movie/" + id}>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title>
+            <h4>{title}</h4>
+          </Card.Title>
           <Card.Img
             variant='top'
             src={"https://image.tmdb.org/t/p/w500" + poster_path}
           />
           {poster_path ? <Image /> : <p>No Photo</p>}
-          <Card.Text>Release Date: {release_date}</Card.Text>
-          <Card.Text>IMDB Rating: {vote_average}</Card.Text>
+          <Card.Text>
+            <h5>IMDB Rating: {vote_average}</h5>
+          </Card.Text>
+          <Card.Text>
+            {/* {movie.genres &&
+              movie.genres.map((genre, i) => (
+                <Badge className='mr-2 badge'>{genre.name}</Badge>
+              ))} */}
+          </Card.Text>
         </Card.Body>
-        <Link className='btn btn-primary m-2' to={"/movie/" + id}>
-          more details
-        </Link>
-      </Card>
-    
+      </Link>
+    </Card>
   );
 }
 

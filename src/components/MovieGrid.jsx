@@ -9,7 +9,7 @@ function MovieGrid(props) {
   console.log(movies);
   return (
     <Container>
-      <Row xs={1} md={2} lg={3}>
+      <Row xs={1} md={2} lg={4}>
         {movies.map((movie) => {
           return (
             <Col className='mb-2'>

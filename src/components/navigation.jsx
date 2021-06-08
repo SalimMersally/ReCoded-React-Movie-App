@@ -25,19 +25,17 @@ function Navigation(props) {
   return (
     <Container className='mt-3'>
       <Row xs sm md lg={3} className='m-3'>
-        <Col lg='3' md='3' xs='3' className='mt-2'>
+        <Col lg='4' md='3' xs='3' className='mt-2'>
           <Row>
             <Col lg='4'>
               {" "}
               <Dropdown>
-                <Dropdown.Toggle variant='primary' id='dropdown-basic'>
-                  Genres{" "}
-                </Dropdown.Toggle>{" "}
+                <Dropdown.Toggle id='dropdown-basic'>Genres </Dropdown.Toggle>{" "}
                 <Dropdown.Menu> {dropdowns} </Dropdown.Menu>
               </Dropdown>
             </Col>
             <Col lg='8'>
-              <Button variant='primary' id='wishlist-button'>
+              <Button id='wishlist-button'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -69,7 +67,7 @@ function Navigation(props) {
             سينما الجواهر
           </h1>{" "}
         </Col>{" "}
-        <Col lg='5' md='4' xs='5' className='mt-2'>
+        <Col lg='4' md='4' xs='5' className='mt-2'>
           <SearchBox function={props.function} />{" "}
         </Col>{" "}
       </Row>
