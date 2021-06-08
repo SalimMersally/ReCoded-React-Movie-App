@@ -11,8 +11,8 @@ function MovieItem(props) {
     props.movie;
 
   return (
-    <Row>
-      <Card className='m-3'>
+    
+      <Card>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Img
@@ -23,11 +23,11 @@ function MovieItem(props) {
           <Card.Text>Release Date: {release_date}</Card.Text>
           <Card.Text>IMDB Rating: {vote_average}</Card.Text>
         </Card.Body>
-        <Link className='btn btn-primary' to={"/movie/" + id}>
+        <Link className='btn btn-primary m-2' to={"/movie/" + id}>
           more details
         </Link>
       </Card>
-    </Row>
+    
   );
 }
 
