@@ -8,11 +8,11 @@ function MovieGrid(props) {
   const movies = props.movies;
   console.log(movies);
   return (
-    <Container className="mt-4">
+    <Container>
       <Row xs={1} md={2} lg={3}>
         {movies.map((movie) => {
           return (
-            <Col>
+            <Col className='mb-2'>
               <MovieItem movie={movie} />
             </Col>
           );
