@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Image from "react-bootstrap/Image";
 import { Link, useParams } from "react-router-dom";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import genres from "./genres";
-import Button from "react-bootstrap/Button";
+import { Container ,Badge ,Row ,Col ,Image,Button } from "react-bootstrap";
 
 //Movie Item Details Page
 
@@ -54,10 +51,12 @@ function MovieDetails() {
   console.log(movieTrailer);
 
   return (
-    <div>
-      <Button variant='outline-primary'>
+    <Container>
+      <Button id='btn-link'>
         {" "}
-        <Link to='/'>{"<"} back</Link>
+        <Link to='/' id='btn-link'>
+          {"<"} back
+        </Link>
       </Button>
 
       <Row id='movieItemStyle' className='m-3 p-2'>
@@ -78,6 +77,12 @@ function MovieDetails() {
           <p>{movie.overview}</p>
           <h5>IMDB Rating: {movie.vote_average}</h5>
           <h5>Release Date: {movie.release_date}</h5>
+          {movie.genres &&
+            movie.genres.map((genre, i) => (
+              <Badge className='mr-2 badge'>
+                {genre.name}
+              </Badge>
+            ))}
           {/* Actors - Display only first 3 items from array if the 
           person's role is acting and put the name in a list */}
           <h3>Actors</h3>
@@ -109,7 +114,7 @@ function MovieDetails() {
           </div>
           {/* Trailer - Embed YouTube link into the webpage */}
           <h3>Trailer</h3>
-          <Row className='m-3 p-2' lg={1}>
+          <Row className='m-3 p-2'>
             {movieTrailer &&
               movieTrailer.map((item) => {
                 if (item.name === "Official Trailer") {
@@ -130,7 +135,7 @@ function MovieDetails() {
           </Row>
         </Col>
       </Row>
-    </div>
+    </Container>
   );
 }
 export default MovieDetails;

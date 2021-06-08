@@ -18,7 +18,7 @@ function SearchBox(props) {
   return (
     <Row>
       <Col className='mt-2 p-0' lg='1' md='1'>
-        {' '}
+        {" "}
         <Spinner
           animation='grow'
           variant='dark'
@@ -36,16 +36,16 @@ function SearchBox(props) {
             aria-label='Search'
             value={searchInput}
             onChange={(e) => {
-              onSearch(e)
-              setSearchInput(e.target.value)
+              onSearch(e);
+              setSearchInput(e.target.value);
             }}
           />
           <Button
-            variant='outline-primary'
+            id='btn-link'
             onClick={(e) => {
-              props.function(path, searchInput, 0)
-              setSearchInput('')
-              setIsHidden('hidden')
+              props.function(path, searchInput, 0);
+              setSearchInput("");
+              setIsHidden("hidden");
             }}
           >
             Search
@@ -53,7 +53,7 @@ function SearchBox(props) {
         </Form>
       </Col>
     </Row>
-  )
+  );
 }
 
 export default SearchBox
