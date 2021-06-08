@@ -1,9 +1,6 @@
 import React from "react";
-import Image from "react-bootstrap/Image";
-import { Card, Badge } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
-import { Link, useHistory } from "react-router-dom";
-// import Card from "react-bootstrap/Card";
+import { Card, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 // Movie Grid Item
 function MovieItem(props) {
@@ -11,14 +8,14 @@ function MovieItem(props) {
     props.movie;
 
   return (
-    <Card id='cardItem'>
-      <Link className='btn' to={"/movie/" + id}>
+    <Card id="cardItem">
+      <Link className="btn" to={"/movie/" + id}>
         <Card.Body>
           <Card.Title>
             <h4>{title}</h4>
           </Card.Title>
           <Card.Img
-            variant='top'
+            variant="top"
             src={"https://image.tmdb.org/t/p/w500" + poster_path}
           />
           {poster_path ? <Image /> : <p>No Photo</p>}

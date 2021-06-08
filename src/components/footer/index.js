@@ -1,7 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row ,Col ,Image} from "react-bootstrap";
 
 function Footer() {
   return (
@@ -21,31 +20,31 @@ function Footer() {
         </Col>
         <Col lg={3}>
           <Image
-            src='https://avatars.githubusercontent.com/u/61241089?v=4'
+            src="https://avatars.githubusercontent.com/u/61241089?v=4"
             roundedCircle
-            width='40%'
+            width="40%"
           ></Image>
-          <Button variant='link' href='https://github.com/karenchehade'>
+          <Button variant="link" href="https://github.com/karenchehade">
             Karen Chehade
           </Button>
         </Col>
         <Col lg={3}>
           <Image
-            src='https://avatars.githubusercontent.com/u/81575585?v=4'
+            src="https://avatars.githubusercontent.com/u/81575585?v=4"
             roundedCircle
-            width='40%'
+            width="40%"
           ></Image>
-          <Button variant='link' href='https://github.com/SalimMersally'>
+          <Button variant="link" href="https://github.com/SalimMersally">
             Salim Al Mersally
           </Button>
         </Col>
         <Col lg={3}>
           <Image
-            src='https://avatars.githubusercontent.com/u/74449116?v=4'
+            src="https://avatars.githubusercontent.com/u/74449116?v=4"
             roundedCircle
-            width='40%'
+            width="40%"
           ></Image>
-          <Button variant='link' href='https://github.com/hsank96'>
+          <Button variant="link" href="https://github.com/hsank96">
             Hazem Sankari
           </Button>
         </Col>
