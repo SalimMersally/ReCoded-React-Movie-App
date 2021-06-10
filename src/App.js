@@ -7,6 +7,7 @@ import Navigation from './components/navigation/'
 import Footer from './components/footer/'
 import MovieDetails from './components/main/movieDetails'
 import { useLocation } from 'react-router-dom'
+import ActorPage from './components/main/actorPage'
 
 //import css
 import './styles.css'
@@ -32,6 +33,9 @@ export default function App() {
         </Route>
         <Route path='/movie/:id'>
           <MovieDetails />
+        </Route>
+        <Route path='/person/:id'>
+          <ActorPage />
         </Route>
         <Route pathname='/search' search='?query='>
           {/* <Main pathname: "/search", search: "?query="shoes" /> */}
