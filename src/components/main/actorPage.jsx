@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button ,Row,Container , Col ,Image} from "react-bootstrap";
+import { AppContext } from "../../StateProvider";
 
 function ActorPage() {
   let [actor, setActor] = useState({});
   const { id } = useParams();
+  const [state, dispatch] = useContext(AppContext);
+  const { movies, genreId, watchList } = state;
   // https://api.themoviedb.org/3/person/54693?api_key=8f1f011d080e1565511d99335cb48312
 
   //Fetching Actor Information
@@ -20,31 +23,37 @@ function ActorPage() {
 
   //console.log(actor)
   return (
-    <div>
-      <Button id="btn-link">
+    <Container>
+      <Button id='btn-link'>
         {" "}
-        <Link to="/" id="btn-link">
+        <Link to={'/movie/'+ movies.id} id='btn-link'>
           {"<"} back
         </Link>
       </Button>
-      <h1>Actor Information</h1>
-      <img
-        src={"https://image.tmdb.org/t/p/original/" + actor["profile_path"]}
-        alt="Actor"
-        width="20%"
-        height="20%"
-      ></img>
-      <h2>Actor Name: {actor["name"]}</h2>
-      <h2>Born On: {actor["birthday"]}</h2>
-      <h2>Place of Birth: {actor["place_of_birth"]}</h2>
-      <h2>Popularity: {actor["popularity"]}</h2>
-      {actor.biography && (
-        <>
-          <h2>Biography:</h2> <p>{actor["biography"]}</p>
-        </>
-      )}
+      <Row id='movieItemStyle' className='m-3 p-2'>
+        <h2>Actor Information</h2>
+        <Col lg='4'>
+          <Image
+            src={"https://image.tmdb.org/t/p/original/" + actor["profile_path"]}
+            fluid
+            thumbnail
+          />
+        </Col>
+        <Col lg='8'>
+          <h3>Actor Name: {actor["name"]}</h3>
+          <h4>Born On: {actor["birthday"]}</h4>
+          <h4>Place of Birth: {actor["place_of_birth"]}</h4>
+          <h4>Popularity: {actor["popularity"]}</h4>
+          {actor.biography && (
+            <>
+              <h5>Biography:</h5> <p>{actor["biography"]}</p>
+            </>
+          )}
+        </Col>
+      </Row>
+
       {/* https://image.tmdb.org/t/p/original/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg */}
-    </div>
+    </Container>
   );
 }
 

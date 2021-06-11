@@ -91,14 +91,17 @@ function MovieDetails() {
                   ) {
                     return (
                       <Col>
-                        <Link to={"/person/" + item["id"]}>
+                        <Link
+                          to={"/person/" + item["id"]}
+                          params={{ id:id }}
+                        >
                           <img
                             src={
                               "https://image.tmdb.org/t/p/original/" +
                               item.profile_path
                             }
-                            width="70%"
-                            height="70%"
+                            width='70%'
+                            height='70%'
                             thumbnail
                           />
                           <p>{item.original_name}</p>
