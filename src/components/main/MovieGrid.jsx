@@ -3,16 +3,14 @@ import MovieItem from "./movieItem";
 import { Container, Row, Col } from "react-bootstrap";
 import { AppContext, useMovies } from "../../StateProvider";
 
-const genrePath = "discover/movie";
-
-function MovieGrid(props) {
+function MovieGrid() {
   const [state] = useContext(AppContext);
-  let { movies, genreId } = state;
-  movies = useMovies(genrePath, "", genreId);
+  let { movies, genreId, searchInput } = state;
+  movies = useMovies(searchInput, genreId);
 
   return (
     <Container>
-      {console.log(movies)}
+      {searchInput !== "" && <Row>Search Result for "{searchInput}":</Row>}
       <Row xs={1} md={2} lg={4}>
         {movies.map((movie) => {
           return (
