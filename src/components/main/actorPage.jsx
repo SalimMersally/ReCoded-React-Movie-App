@@ -38,7 +38,11 @@ function ActorPage() {
       <h2>Born On: {actor["birthday"]}</h2>
       <h2>Place of Birth: {actor["place_of_birth"]}</h2>
       <h2>Popularity: {actor["popularity"]}</h2>
-      <h2>Biography:</h2> <p>{actor["biography"]}</p>
+      {actor.biography && (
+        <>
+          <h2>Biography:</h2> <p>{actor["biography"]}</p>
+        </>
+      )}
       {/* https://image.tmdb.org/t/p/original/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg */}
     </div>
   );

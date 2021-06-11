@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Footer() {
   return (
     <Container>
-      <Row>
-        <Col>
+      <Row className="justify-content-center">
+        <Col md="auto">
           <h5>Enjoy your movies with us</h5>
           <h6>
             <q>
@@ -20,7 +20,7 @@ function Footer() {
         </Col>
       </Row>
       <Row>
-        <Col lg={3}>
+        <Col lg={4}>
           <Image
             src="https://avatars.githubusercontent.com/u/61241089?v=4"
             roundedCircle
@@ -30,7 +30,7 @@ function Footer() {
             Karen Chehade
           </Button>
         </Col>
-        <Col lg={3}>
+        <Col lg={4}>
           <Image
             src="https://avatars.githubusercontent.com/u/81575585?v=4"
             roundedCircle
@@ -40,7 +40,7 @@ function Footer() {
             Salim Al Mersally
           </Button>
         </Col>
-        <Col lg={3}>
+        <Col lg={4}>
           <Image
             src="https://avatars.githubusercontent.com/u/74449116?v=4"
             roundedCircle

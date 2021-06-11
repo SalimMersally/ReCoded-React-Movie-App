@@ -10,7 +10,11 @@ function MovieGrid() {
 
   return (
     <Container>
-      {searchInput !== "" && <Row>Search Result for "{searchInput}":</Row>}
+      {searchInput !== "" && (
+        <Row>
+          <h3>Search Result for "{searchInput}":</h3>
+        </Row>
+      )}
       <Row xs={1} md={2} lg={4}>
         {movies.map((movie) => {
           return (

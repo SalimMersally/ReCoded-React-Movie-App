@@ -8,9 +8,7 @@ function MovieDetails() {
   let [movie, setMovie] = useState({});
   let [movieActors, setMovieActors] = useState([]);
   let [movieTrailer, setMovieTrailer] = useState([]);
-  // const IMDB_API = 'k_kq2owrli'
   const { id } = useParams();
-  // const YT_LINK = 'https://www.youtube.com/watch?v='
   const YT_EMBED = "https://www.youtube.com/embed/";
 
   //Setting the Movie:

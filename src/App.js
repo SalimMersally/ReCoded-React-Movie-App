@@ -25,10 +25,7 @@ export default function App() {
         <Route path="/person/:id">
           <ActorPage />
         </Route>
-        <Route pathname="/search" search="?query=">
-          {/* <Main pathname: "/search", search: "?query="shoes" /> */}
-          {/* const urlParams = new URLSearchParams(window.location.search);
-const myParam = urlParams.get('myParam');*/}
+        <Route pathname="/search">
           {/* const search = useLocation().search;
   const name = new URLSearchParams(search).get('name'); */}
         </Route>
