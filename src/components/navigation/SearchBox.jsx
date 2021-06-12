@@ -21,7 +21,7 @@ function SearchBox(props) {
         {" "}
         <Spinner
           animation="grow"
-          variant="dark"
+          variant="light"
           style={{
             visibility: isHidden,
           }}
