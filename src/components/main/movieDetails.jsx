@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container, Badge, Row, Col, Image, Button } from "react-bootstrap";
+import { AppContext } from "../../StateProvider";
 
 //Movie Item Details Page
 
@@ -8,6 +9,8 @@ function MovieDetails() {
   let [movie, setMovie] = useState({});
   let [movieActors, setMovieActors] = useState([]);
   let [movieTrailer, setMovieTrailer] = useState([]);
+  const [state, dispatch] = useContext(AppContext);
+  let { movies, genreId, searchInput, watchList, movieId } = state;
   const { id } = useParams();
   const YT_EMBED = "https://www.youtube.com/embed/";
 
@@ -45,7 +48,10 @@ function MovieDetails() {
       .then((response) => response.json())
       .then((json) => setMovieActors(json.cast));
   }, [id]);
-  console.log(movieTrailer);
+
+  useEffect(() => {
+    dispatch({ type: "SET_CURRENT", value: id });
+  });
 
   return (
     <Container>
@@ -91,17 +97,14 @@ function MovieDetails() {
                   ) {
                     return (
                       <Col>
-                        <Link
-                          to={"/person/" + item["id"]}
-                          params={{ id:id }}
-                        >
+                        <Link to={"/person/" + item["id"]} params={{ id: id }}>
                           <img
                             src={
                               "https://image.tmdb.org/t/p/original/" +
                               item.profile_path
                             }
-                            width='70%'
-                            height='70%'
+                            width="70%"
+                            height="70%"
                             thumbnail
                           />
                           <p>{item.original_name}</p>

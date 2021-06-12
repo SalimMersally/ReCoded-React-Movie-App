@@ -7,6 +7,7 @@ const initialState = {
   genreId: 0,
   searchInput: "",
   watchList: [],
+  movieId: "",
 };
 
 function reducer(state, action) {
@@ -19,6 +20,8 @@ function reducer(state, action) {
       return { ...state, searchInput: action.value };
     case "SET_WATCH":
       return { ...state, watchList: action.value };
+    case "SET_CURRENT":
+      return { ...state, movieId: action.value };
     default:
       return state;
   }
