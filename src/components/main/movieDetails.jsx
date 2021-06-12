@@ -51,7 +51,7 @@ function MovieDetails() {
 
   useEffect(() => {
     dispatch({ type: "SET_CURRENT", value: id });
-  });
+  }, [id]);
 
   return (
     <Container>
