@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Card, Image } from "react-bootstrap";
+import { Card, Image, Row, Col } from "react-bootstrap";
 import { AppContext } from "../../StateProvider";
 
 // Movie Grid Item
@@ -21,17 +21,17 @@ function MovieCard(props) {
   const { title, poster_path, vote_average } = props.movie;
 
   return (
-    <Card id="cardItem">
+    <Card id='cardItem'>
       <Card.Body>
-        <Card.Title>
+        <Card.Title id='movieTitleCard'>
           <h4>{title}</h4>
         </Card.Title>
         <Card.Img
-          variant="top"
+          variant='top'
           src={"https://image.tmdb.org/t/p/w500" + poster_path}
         />
         {poster_path ? <Image /> : <p>No Photo</p>}
-        <Card.Text>
+        <Card.Text id='movieRateCard'>
           <h5>IMDB Rating: {vote_average}</h5>
         </Card.Text>
       </Card.Body>
@@ -55,14 +55,19 @@ function CardHover(props) {
   }
 
   return (
-    <Card id="cardItem">
+    <Card id='cardItemHover'>
       <Card.Body>
-        <Link className="btn" to={"/movie/" + id}>
-          See Details
-        </Link>
-        <button className="btn" onClick={addToList}>
-          Add to WatchList
-        </button>
+        <Row className='align-items-center '>
+          <Col className='align-items-center'>
+            {" "}
+            <Link id='btnCard' to={"/movie/" + id}>
+              See Details
+            </Link>
+              <button id='btnCard' onClick={addToList}>
+                Add to WatchList
+              </button>
+          </Col>
+        </Row>
       </Card.Body>
     </Card>
   );
