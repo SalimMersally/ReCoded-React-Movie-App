@@ -2,10 +2,10 @@ import React, { useState, useContext } from "react";
 import { Button, Form, Spinner, Row, Col } from "react-bootstrap";
 import { AppContext } from "../../StateProvider";
 
-function SearchBox(props) {
+function SearchBox() {
   const [searchInput, setSearchInput] = useState("");
   const [isHidden, setIsHidden] = useState("hidden");
-  const [state, dispatch] = useContext(AppContext);
+  const [, dispatch] = useContext(AppContext);
 
   function onSearch(e) {
     if (e.target.value !== "") {

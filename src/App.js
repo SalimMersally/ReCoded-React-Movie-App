@@ -6,7 +6,7 @@ import Navigation from "./components/navigation/";
 import Footer from "./components/footer/";
 import MovieDetails from "./components/main/movieDetails";
 import ActorPage from "./components/main/actorPage";
-
+import SearchResult from "./components/navigation/searchResult";
 //import css
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,18 +16,17 @@ export default function App() {
     <Router>
       <Navigation />
       <Switch>
-        <Route path="/" exact>
+        <Route path='/' exact>
           <Main />
         </Route>
-        <Route path="/movie/:id">
+        <Route path='/movie/:id'>
           <MovieDetails />
         </Route>
-        <Route path="/person/:id">
+        <Route path='/person/:id'>
           <ActorPage />
         </Route>
-        <Route pathname="/search">
-          {/* const search = useLocation().search;
-  const name = new URLSearchParams(search).get('name'); */}
+        <Route path='/search'>
+          <SearchResult />
         </Route>
       </Switch>
       <Footer />
