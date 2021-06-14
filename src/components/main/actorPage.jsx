@@ -8,7 +8,6 @@ function ActorPage() {
   const { id } = useParams();
   const [state, dispatch] = useContext(AppContext);
   const { movies, genreId, searchInput, watchList, movieId } = state;
-  // https://api.themoviedb.org/3/person/54693?api_key=8f1f011d080e1565511d99335cb48312
 
   //Fetching Actor Information
   useEffect(() => {
@@ -51,8 +50,6 @@ function ActorPage() {
           )}
         </Col>
       </Row>
-
-      {/* https://image.tmdb.org/t/p/original/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg */}
     </Container>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function Footer() {
   return (

@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import MovieItem from "./movieItem";
-import { Link, useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { AppContext, useMovies } from "../../StateProvider";
 
 function MovieGrid() {
   const [state] = useContext(AppContext);
   let { movies, genreId, searchInput } = state;
-  const { id } = useParams();
   movies = useMovies(searchInput, genreId);
 
   return (
@@ -21,9 +19,7 @@ function MovieGrid() {
         {movies.map((movie) => {
           return (
             <Col className='mb-2'>
-              {/* <Link to={"/watchlist/" + movie["id"]}> */}
-                <MovieItem movie={movie} />
-              {/* </Link> */}
+              <MovieItem movie={movie} />
             </Col>
           );
         })}

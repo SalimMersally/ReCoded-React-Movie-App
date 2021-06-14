@@ -63,9 +63,9 @@ function CardHover(props) {
             <Link id='btnCard' to={"/movie/" + id}>
               See Details
             </Link>
-              <button id='btnCard' onClick={addToList}>
-                Add to WatchList
-              </button>
+            <button id='btnCard' onClick={addToList}>
+              Add to WatchList
+            </button>
           </Col>
         </Row>
       </Card.Body>

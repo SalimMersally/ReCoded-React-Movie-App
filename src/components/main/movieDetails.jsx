@@ -9,8 +9,7 @@ function MovieDetails() {
   let [movie, setMovie] = useState({});
   let [movieActors, setMovieActors] = useState([]);
   let [movieTrailer, setMovieTrailer] = useState([]);
-  const [state, dispatch] = useContext(AppContext);
-  let { movies, genreId, searchInput, watchList, movieId } = state;
+  const [, dispatch] = useContext(AppContext);
   const { id } = useParams();
   const YT_EMBED = "https://www.youtube.com/embed/";
 
@@ -26,7 +25,6 @@ function MovieDetails() {
   }, [id]);
 
   //Setting Movie Trailer:
-  // https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/" +
@@ -38,7 +36,6 @@ function MovieDetails() {
   }, [id]);
 
   //Setting Movie Actors:
-  // https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=*
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/" +
